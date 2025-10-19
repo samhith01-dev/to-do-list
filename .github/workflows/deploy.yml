@@ -1,0 +1,40 @@
+name: Deploy to GitHub Pages
+
+# When should this workflow run?
+on:
+  push:
+    branches: [main]  # Every time you push to main branch
+
+# Give GitHub permission to write to the repo
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # It runs on a Linux virtual machine
+
+    steps:
+      # Step 1: Checkout your code (download the repo code)
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Node.js (needed to run npm)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Step 3: Install dependencies (like node_modules)
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build your React project
+      - name: Build project
+        run: npm run build
+
+      # Step 5: Deploy built files (dist folder) to gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages     # target branch to deploy
+          folder: dist         # folder with build output (Vite uses dist)
