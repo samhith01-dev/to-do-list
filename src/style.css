@@ -1,0 +1,46 @@
+:root {
+  color-scheme: light dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.app { display: grid; gap: 1rem; }
+.app h1 { margin: 0; font-size: 2rem; line-height: 1.2; text-align: center; }
+
+.new-task { display: grid; grid-template-columns: 1fr auto; gap: .5rem; }
+.new-task input[type="text"] { padding: .75rem .9rem; border-radius: .5rem; border: 1px solid color-mix(in oklab, currentColor 20%, transparent); background: color-mix(in oklab, Canvas 95%, transparent); }
+.new-task button { padding: .75rem 1rem; border-radius: .5rem; border: 1px solid transparent; background: #646cff; color: white; font-weight: 600; cursor: pointer; }
+
+.controls { display: flex; justify-content: space-between; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.filters { display: inline-flex; border: 1px solid color-mix(in oklab, currentColor 20%, transparent); border-radius: .5rem; overflow: hidden; }
+.filters button { padding: .5rem .8rem; background: transparent; border: 0; cursor: pointer; }
+.filters button.active { background: color-mix(in oklab, currentColor 10%, transparent); }
+
+.meta { display: inline-flex; align-items: center; gap: .75rem; }
+.meta .link { background: transparent; border: 0; color: #646cff; cursor: pointer; }
+
+.task-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+.task { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .75rem; padding: .5rem .5rem .5rem .25rem; border: 1px solid color-mix(in oklab, currentColor 12%, transparent); border-radius: .5rem; }
+.task-item { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: .75rem; }
+.task .title { text-align: left; }
+.task.completed .title { text-decoration: line-through; opacity: .6; }
+.task .delete { background: transparent; border: 0; font-size: 1.25rem; line-height: 1; padding: .25rem .5rem; cursor: pointer; }
+.task .edit-input { padding: .4rem .6rem; border-radius: .4rem; border: 1px solid color-mix(in oklab, currentColor 20%, transparent); background: color-mix(in oklab, Canvas 95%, transparent); }
+.task-list .empty { text-align: center; padding: 1rem; color: #888; }
